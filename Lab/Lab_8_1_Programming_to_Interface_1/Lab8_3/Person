@@ -1,0 +1,17 @@
+
+public class Person {
+	
+	private String name;
+	
+	public Person(String n) {
+		name = n;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public boolean sameName(Person q) {
+		return getName().equals(q.getName());
+	}
+}
