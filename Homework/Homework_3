@@ -1,0 +1,89 @@
+import java.awt.*;
+import javax.swing.*;
+
+/* FlowerGarden - 꽃을 그릴 그래픽스 윈도우를 만듦 */
+public class FlowerGarden extends JPanel {
+	
+	private int WIDTH = 500;
+	private int HEIGHT = 700;
+	private int x = 0;
+	private int y = 0;
+	private int r = 30;
+	private int angle = 0;
+	
+	/* FlowerGarden - constructor 메소드, 지정된 크기의 창을 생성
+	 * @param WIDTH - 창의 너비
+	 * @param HEIGHT - 창의 높이 */
+	public FlowerGarden() {
+		JFrame frame = new JFrame();
+		frame.getContentPane().add(this);
+		frame.setTitle("Eunjin's Flower Garden");
+		frame.setSize(WIDTH, HEIGHT);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+	
+	/* paintComponent - 화가 메소드
+	 * @param g - 꽃밭을 그리는 그래픽스 펜 */
+	public void paintComponent(Graphics g) {
+		g.setColor(Color.green);
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		drawPetal(g, x + 70, y + 70, r + 70, angle, Color.magenta);
+		drawFlower(g, x + 98, y + 98, r + 13, Color.pink, Color.red);
+		
+		drawPetal(g, x + 245, y + 65, r + 160, angle, Color.blue);
+		drawFlower(g, x + 303, y + 120, r + 45, Color.cyan, Color.black);
+		
+		drawPetal(g, x + 80, y + 310, r + 100, angle, Color.orange);
+		drawFlower(g, x + 118, y + 347, r + 25, Color.yellow, Color.orange);
+		
+		drawPetal(g, x + 267, y + 355, r + 40, angle, Color.red);
+		drawFlower(g, x + 287, y + 375, r, Color.yellow, Color.black);
+		
+		drawPetal(g, x + 155, y + 450, r + 140, angle, Color.white);
+		drawFlower(g, x + 200, y + 495, r + 50, Color.pink, Color.magenta);
+	}
+	
+	/* drawFlower - 꽃을 그리는 메소드 
+	 * @param g - 꽃을 그리는 그래픽스 펜
+	 * @param x - 꽃을 그리는 위치의 x좌표
+	 * @param y - 꽃을 그리는 위치의 y좌표
+	 * @param r - 꽃의 너비와 높이를 지정
+	 * @param c1 - 꽃의 색을 지정
+	 * @param c2 - 꽃의 테두리 색을 지정 */
+	public void drawFlower(Graphics g, int x, int y, int r, Color c1, Color c2) {
+		g.setColor(c1);
+		g.fillOval(x, y, r, r);
+		g.setColor(c2);
+		g.drawOval(x, y, r, r);
+	}
+	
+	/* drawPetal - 꽃잎을 그리는 메소드 
+	 * @param g - 꽃잎을 그리는 그래픽스 펜
+	 * @param x - 꽃잎을 그리는 위치의 x좌표
+	 * @param y - 꽃잎을 그리는 위치의 y좌표
+	 * @param r - 꽃잎의 너비와 높이를 지정
+	 * @param angle - 꽃잎의 각도를 지정
+	 * @param color - 꽃잎의 색을 지정 */
+	private void drawPetal(Graphics g, int x, int y, int r, int angle, Color color) {
+		g.setColor(Color.black);
+		g.fillArc(x + 1, y - 1, r, r, angle - 2, 54);
+		g.fillArc(x, y - 1, r, r, angle + 73, 54);
+		g.fillArc(x - 1, y - 1, r, r, angle + 148, 54);
+		g.fillArc(x - 1, y + 1, r, r, angle + 223, 54);
+		g.fillArc(x + 1, y + 1, r, r, angle + 288, 54);
+		
+		g.setColor(color);
+		g.fillArc(x, y, r, r, angle, 50);
+		g.fillArc(x, y, r, r, angle + 75, 50);
+		g.fillArc(x, y, r, r, angle + 150, 50);
+		g.fillArc(x, y, r, r, angle + 225, 50);
+		g.fillArc(x, y, r, r, angle + 290, 50);
+	} 
+	
+	/* main - 클래스를 구동할 메인 메소드 */
+	public static void main(String[] args) {
+		new FlowerGarden();
+	}
+}
