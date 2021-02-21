@@ -1,0 +1,26 @@
+import javax.swing.JOptionPane;
+
+/** Controller Class */
+public class PuzzleController {
+
+	private SlidePuzzleBoard board;
+	private PuzzleWriter writer;
+	
+	/** Constructor PuzzleController - 컨트롤러 초기화 */
+	public PuzzleController(SlidePuzzleBoard b, PuzzleWriter w) {
+		board = b;
+		writer = w;
+	}
+	
+	/** play - 퍼즐 게임 실행 */
+	public void play() {
+		while(true) {
+			writer.displayBoard();
+			int i = Integer.parseInt(JOptionPane.showInputDialog("퍼즐 조각 번호를 선택하세요."));
+			
+			if(!board.move(i))
+				writer.printError("움직일 수 없는 퍼즐 조각입니다.");
+		}
+	}
+	
+}
