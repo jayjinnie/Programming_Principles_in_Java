@@ -1,0 +1,22 @@
+package counter;
+
+import java.awt.event.*;
+import javax.swing.*;
+
+public class CountButton extends JButton implements ActionListener {
+	
+	private Counter count;
+	private CounterFrame view;
+	
+	public CountButton(String label, Counter m, CounterFrame v) {
+		super(label);
+		count = m;
+		view = v;
+		addActionListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		count.increment();
+		view.update();
+	}
+}
