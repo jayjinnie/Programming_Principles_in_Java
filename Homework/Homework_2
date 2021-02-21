@@ -1,0 +1,62 @@
+import java.awt.*;
+import javax.swing.*;
+import java.time.*;
+
+public class Desktop_Watch extends JPanel { 
+	// 프레임, 패널 생성
+	private int SIZE = 100, X = 3, Y = 2; 
+	
+	public Desktop_Watch() {
+		JFrame clock_frame = new JFrame(); 
+		
+		clock_frame.getContentPane().add(this);
+		clock_frame.setTitle("Desktop Watch"); 
+		clock_frame.setSize(SIZE * X, SIZE * Y); 
+		clock_frame.setVisible(true);
+		clock_frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+	
+	public void paintComponent(Graphics g) {
+		// 배경 채우기
+		g.setColor(Color.darkGray); 
+		g.fillRect(0, 0, SIZE * X, SIZE * Y);
+		// 시계 원판 그리기
+		int x = 50, y = 50, diameter = 100;
+				
+		g.setColor(Color.blue);
+		g.drawOval(x, y, diameter, diameter);
+		// 시침, 분침, 초침 각 지정
+		LocalDateTime now = LocalDateTime.now();
+		int seconds_angle = 90 - now.getSecond() * 6;
+		int minutes_angle = 90 - now.getMinute() * 6;
+		int hours_angle = 90 - now.getHour() * 30;
+		
+		// 시침, 분침, 초침 그리기
+		g.setColor(Color.yellow);
+		g.fillArc(x + 5,  y + 5,  diameter - 10,  diameter - 10,  seconds_angle, -3);
+		
+		g.setColor(Color.green);
+		g.fillArc(x + 10, y + 10, diameter - 20, diameter - 20, minutes_angle, 5);
+		
+		g.setColor(Color.magenta);
+		g.fillArc(x + 25, y + 25,  diameter - 50,  diameter - 50,  hours_angle, -8);
+		
+		// 디지털 시계 배경 채우기
+		g.setColor(Color.blue);
+		int x_size = 130, y_size = 70;
+		g.fillRect(x + 100, y - 45, x_size, y_size);
+		// 디지털 시계 이름 / 년,월,일 / 시,분,초 나타내기
+		g.setColor(Color.orange);
+		g.drawString("DIGITAL  WATCH", x + 120, y - 25);
+	
+		int year = now.getYear(), month = now.getMonthValue(), day = now.getDayOfMonth();
+		g.drawString(("DATE " + year + " - " + month + " - " + day), x + 110, y - 5);
+		
+		int seconds = now.getSecond(), minutes = now.getMinute(), hours = now.getHour();
+		g.drawString(("TIME  " + hours + " : " + minutes + " : " + seconds), x + 110, y + 15);
+	}
+
+	public static void main(String[] args) {
+		new Desktop_Watch();
+	}
+}
