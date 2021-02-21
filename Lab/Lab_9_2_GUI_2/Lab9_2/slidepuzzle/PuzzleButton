@@ -1,0 +1,27 @@
+package slidepuzzle;
+
+import java.awt.event.*;
+import javax.swing.*;
+
+public class PuzzleButton extends JButton implements ActionListener {
+
+	private SlidePuzzleBoard puzzle;
+	private PuzzleFrame view;
+	
+	/** Constructor */
+	public PuzzleButton(SlidePuzzleBoard p, PuzzleFrame v) {
+		puzzle = p;
+		view = v;
+		addActionListener(this);
+	}
+	
+	/** actionPerformed - 퍼즐을 움직이고 퍼즐 보드 상태를 갱신하는 기능을 수행 */
+	public void actionPerformed(ActionEvent e) {
+		String s = getText();
+		if (!s.equals("")) {
+			boolean ok = puzzle.move(Integer.parseInt(s));
+			if (ok)
+				view.update();
+		}
+	}
+}
