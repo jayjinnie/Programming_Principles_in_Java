@@ -1,0 +1,14 @@
+import java.text.DecimalFormat;
+
+public class Lab2_1 {
+
+	public static void main(String[] args) {
+		double mile = Double.parseDouble(args[0]);
+		double km = mile * 1.60934;
+		
+		DecimalFormat formatter = new DecimalFormat("0.0");
+		
+		System.out.println(mile + " 마일은 " + formatter.format(km) + " 킬로미터 입니다.");
+	}
+
+}
