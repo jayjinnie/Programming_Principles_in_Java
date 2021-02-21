@@ -1,0 +1,27 @@
+package frameexample;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Frame1 extends JFrame {
+	
+	public Frame1() {
+		// 라벨, 버튼 패널 만들기
+		JLabel label = new JLabel("OK 누르세요!");
+		JButton button = new JButton("OK");
+		
+		Container c = getContentPane(); // 컨테이너 만들기
+		c.setLayout(new FlowLayout());
+		c.add(label);
+		c.add(button);
+		 
+		setTitle("Button");
+		setSize(200, 80);
+		setVisible(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+	
+	public static void main(String[] args) {
+		new Frame1();
+	}
+}
