@@ -53,7 +53,6 @@
 ### Lecture 8. Data Structure Arrays
 ##### Array
 - Lab #7: BlackJack 사례를 통한 배열 이해하기
-- Homework #5: 데스크 탑용 시계 완성 (그래픽 애니메이션 구현)
 #
 ### Lecture 9-1. Programming to Interface (1)
 ##### Database & Record & Key
@@ -62,7 +61,6 @@
 ##### Subtyping
 ##### instanceof
 - Lab #8-1: Database 사례를 통한 상속 이해하기
-- Homework #6: 라이프게임 애니메이션
 
 ### Lecture 9-2. Programming to Interface (2)
 ##### Abstract Class
