@@ -1,0 +1,9 @@
+public class Dice {
+
+	/* throwDice - 주사위 던지기
+	 * @return dice - 주사위를 던져서 나오는 눈의 수 */
+	public int throwDice() {
+		int dice = (int)(Math.random() * 6) + 1;
+		return dice;
+	}
+}
